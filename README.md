@@ -1,6 +1,5 @@
 
 # [C++] FLAPPY BABOON with NEAT and TidyV2sfml
-## Yet another flappy bird clone, but with a baboon
 
 - My very own NEAT framework in C++ (it's neat & tidy) : https://github.com/romainducrocq/TidyVolve
   

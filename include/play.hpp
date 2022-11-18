@@ -22,8 +22,11 @@ namespace App
 
         private:
             void init();
+
             void reset();
+
             void step();
+
             bool play();
 
         private:

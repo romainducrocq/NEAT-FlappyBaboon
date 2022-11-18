@@ -33,7 +33,7 @@ bool Bird::is_collision(const std::array<std::array<math::Vector2f, 2>, 2>& rect
 
 void Bird::rotate_theta()
 {
-    this->theta = math::linterp(this->pos_y - this->y_prev, -this->jump, this->jump, -math::PI / 4, math::PI / 4);
+    this->theta = math::linterp(this->pos_y - this->y_prev, -this->jump, this->jump, -math::PI / 4.f, math::PI / 4.f);
     this->y_prev = this->pos_y;
 }
 

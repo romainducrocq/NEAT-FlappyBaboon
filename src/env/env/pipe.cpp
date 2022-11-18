@@ -6,13 +6,13 @@ Pipe::Pipe()
 
     this->pos_y = (
             (static_cast<float>(std::rand()) / static_cast<float>(RAND_MAX))
-            * (CONST::HEIGHT - this->gap - (2 * this->h_head) - CONST::FLOOR_Y - 2)
-            ) + (this->gap / 2) + this->h_head + 1;
+            * (CONST::HEIGHT - this->gap - (2.f * this->h_head) - CONST::FLOOR_Y - 2.f)
+            ) + (this->gap / 2.f) + this->h_head + 1.f;
 
     this->rects[0][0] = math::Vector2f(this->pos_x, 0.f);
-    this->rects[0][1] = math::Vector2f(this->pos_x + this->width, this->pos_y - (this->gap / 2));
+    this->rects[0][1] = math::Vector2f(this->pos_x + this->width, this->pos_y - (this->gap / 2.f));
 
-    this->rects[1][0] = math::Vector2f(this->pos_x, this->pos_y + (this->gap / 2));
+    this->rects[1][0] = math::Vector2f(this->pos_x, this->pos_y + (this->gap / 2.f));
     this->rects[1][1] = math::Vector2f(this->pos_x + this->width, CONST::HEIGHT);
 }
 
@@ -33,12 +33,12 @@ bool Pipe::passed(float x) const
 
 bool Pipe::middle_of_screen() const
 {
-    return (this->pos_x - (this->width / 2) == CONF::WIN_W / 2.f);
+    return (this->pos_x - (this->width / 2.f) == CONST::WIDTH / 2.f);
 }
 
 bool Pipe::out_of_screen() const
 {
-    return (this->pos_x + this->width < 0);
+    return (this->pos_x + this->width < 0.f);
 }
 
 void Pipe::set_is_passed() { this->is_passed = true; }

@@ -21,7 +21,7 @@ namespace math
 
     inline float rad_to_deg(float deg)
     {
-        return deg * 180 / math::PI;
+        return deg * 180.f / math::PI;
     }
 
     struct Vector2f
@@ -49,7 +49,7 @@ namespace math
 
     inline float dist(const math::Vector2f &p1, const math::Vector2f &p2)
     {
-        return std::sqrt(std::pow(p2.x - p1.x, 2) + std::pow(p2.y - p1.y, 2));
+        return std::sqrt(std::pow(p2.x - p1.x, 2.f) + std::pow(p2.y - p1.y, 2.f));
     }
 
     inline float linterp(float x, float x1, float x2, float y1, float y2)

@@ -33,7 +33,7 @@ void View::EventHandler::get_action(std::vector<float>& act)
             break;
         case CONF::NOOP:
         default:
-            act[0] = 0.f;
+            act[0] = -1.f;
             break;
     }
 }
@@ -98,7 +98,7 @@ void View::Renderer::load_assets()
                                 this->dir + "img/", "pipe_body_full.png", 0.f, 0.f, 0.5f, 0.5f);
     View::Renderer::load_sprite(this->bird_texture, this->bird_sprite,
                                 this->dir + "img/", "seamonkey.png", 0.f, 0.f, 0.5f, 0.5f);
-    this->bird_sprite.setOrigin(sf::Vector2f(this->bird_sprite.getLocalBounds().width * 4/3.f,
+    this->bird_sprite.setOrigin(sf::Vector2f(this->bird_sprite.getLocalBounds().width * 4.f/3.f,
                                              this->bird_sprite.getLocalBounds().height) / 2.f);
 
     this->roboto_font.loadFromFile(this->dir + "font/" + "Roboto-Regular.ttf");
@@ -123,7 +123,7 @@ void View::Renderer::render_pipes(const Pipes& pipes, sf::RenderTarget& window)
 {
     for(const auto& pipe : pipes.get_pipes()) {
         View::Renderer::draw_sprite(this->pipe_body_sprite, pipe.get_rects()[0][0].x,
-                         -(this->pipe_body_sprite.getLocalBounds().height / 2) + pipe.get_rects()[0][1].y, 0.f, window);
+                         -(this->pipe_body_sprite.getLocalBounds().height / 2.f) + pipe.get_rects()[0][1].y, 0.f, window);
         View::Renderer::draw_sprite(this->pipe_body_sprite, pipe.get_rects()[1][0].x, pipe.get_rects()[1][0].y, 0.f, window);
 
         View::Renderer::draw_sprite(this->pipe_head_up_sprite, pipe.get_rects()[0][0].x, pipe.get_rects()[0][1].y - pipe.get_h_head(), 0.f, window);
@@ -134,5 +134,5 @@ void View::Renderer::render_pipes(const Pipes& pipes, sf::RenderTarget& window)
 void View::Renderer::render_score(const Bird& bird, sf::RenderTarget& window)
 {
     View::Renderer::draw_text(this->text, this->roboto_font, "Score : " + std::to_string(bird.get_score()),
-                   24, 10.f, 10.f, sf::Color::Black, window);
+                              24, 10.f, 10.f, sf::Color::Black, window);
 }
