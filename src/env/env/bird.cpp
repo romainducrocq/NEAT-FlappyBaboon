@@ -39,7 +39,7 @@ void Bird::rotate_theta()
 
 void Bird::reward()
 {
-    this->score += 1;
+    this->score += 1.f;
 }
 
 float Bird::get_x() const { return this->pos_x; }

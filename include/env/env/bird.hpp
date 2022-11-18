@@ -24,10 +24,10 @@ class Bird
         float pos_y = CONST::HEIGHT / 2.f;
         float speed = 0.f;
 
-        float score = 0;
+        float score = 0.f;
 
         float theta = 0.f;
-        float y_prev = 0;
+        float y_prev = 0.f;
 
         float back_x;
         float y_lim_down;

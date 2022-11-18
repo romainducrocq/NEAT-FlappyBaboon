@@ -48,7 +48,7 @@ class Pipes
 {
     private:
         std::deque<Pipe> pipes;
-        int next_pipe_i = 0;
+        size_t next_pipe_i = 0;
 
     public:
         Pipes();

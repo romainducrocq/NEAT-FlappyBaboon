@@ -9,7 +9,7 @@ Pipe::Pipe()
             * (CONST::HEIGHT - this->gap - (2 * this->h_head) - CONST::FLOOR_Y - 2)
             ) + (this->gap / 2) + this->h_head + 1;
 
-    this->rects[0][0] = math::Vector2f(this->pos_x, 0);
+    this->rects[0][0] = math::Vector2f(this->pos_x, 0.f);
     this->rects[0][1] = math::Vector2f(this->pos_x + this->width, this->pos_y - (this->gap / 2));
 
     this->rects[1][0] = math::Vector2f(this->pos_x, this->pos_y + (this->gap / 2));
@@ -19,8 +19,8 @@ Pipe::Pipe()
 void Pipe::move()
 {
     this->pos_x -= this->speed;
-    for(int i = 0; i < 2; i++) {
-        for(int j = 0; j < 2; j++) {
+    for(size_t i = 0; i < 2; i++) {
+        for(size_t j = 0; j < 2; j++) {
             this->rects[i][j].x -= this->speed;
         }
     }
@@ -81,7 +81,7 @@ void Pipes::move_pipes()
 
 void Pipes::next_pipe(const float x)
 {
-    int i = 0;
+    size_t i = 0;
     for (auto &pipe: this->pipes) {
         if(! pipe.passed(x)) {
             this->next_pipe_i = i;
