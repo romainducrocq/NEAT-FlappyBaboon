@@ -6,7 +6,8 @@
 #include "utils/logger.hpp"
 
 /*** ADD INCLUDE HERE */
-
+#include "env/env/bird.hpp"
+#include "env/env/pipe.hpp"
 
 namespace App { class Play; }
 
@@ -15,6 +16,8 @@ namespace MyEnv
     /*** DEC MODEL HERE */
     struct Model
     {
+        Bird bird;
+        Pipes pipes;
     };
 
     class Env : public Neat
