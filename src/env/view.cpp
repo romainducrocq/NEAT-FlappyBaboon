@@ -87,21 +87,21 @@ void View::Renderer::draw_text(sf::Text& text, sf::Font& font, const std::string
 void View::Renderer::load_assets()
 {
     View::Renderer::load_sprite(this->background_texture, this->background_sprite,
-                                this->dir + "img/", "background.png", 0.f, 0.f, 0.5f, 0.5f);
+                                this->res + "img/", "background.png", 0.f, 0.f, 0.5f, 0.5f);
     View::Renderer::load_sprite(this->foreground_texture, this->foreground_sprite,
-                                this->dir + "img/", "foreground.png", 0.f, 0.f, 0.5f, 0.5f);
+                                this->res + "img/", "foreground.png", 0.f, 0.f, 0.5f, 0.5f);
     View::Renderer::load_sprite(this->pipe_head_up_texture, this->pipe_head_up_sprite,
-                                this->dir + "img/", "pipe_head_up.png", 0.f, 0.f, 0.5f, 0.5f);
+                                this->res + "img/", "pipe_head_up.png", 0.f, 0.f, 0.5f, 0.5f);
     View::Renderer::load_sprite(this->pipe_head_down_texture, this->pipe_head_down_sprite,
-                                this->dir + "img/", "pipe_head_down.png", 0.f, 0.f, 0.5f, 0.5f);
+                                this->res + "img/", "pipe_head_down.png", 0.f, 0.f, 0.5f, 0.5f);
     View::Renderer::load_sprite(this->pipe_body_texture, this->pipe_body_sprite,
-                                this->dir + "img/", "pipe_body_full.png", 0.f, 0.f, 0.5f, 0.5f);
+                                this->res + "img/", "pipe_body_full.png", 0.f, 0.f, 0.5f, 0.5f);
     View::Renderer::load_sprite(this->bird_texture, this->bird_sprite,
-                                this->dir + "img/", "seamonkey.png", 0.f, 0.f, 0.5f, 0.5f);
+                                this->res + "img/", "seamonkey.png", 0.f, 0.f, 0.5f, 0.5f);
     this->bird_sprite.setOrigin(sf::Vector2f(this->bird_sprite.getLocalBounds().width * 4.f/3.f,
                                              this->bird_sprite.getLocalBounds().height) / 2.f);
 
-    this->roboto_font.loadFromFile(this->dir + "font/" + "Roboto-Regular.ttf");
+    this->roboto_font.loadFromFile(this->res + "font/" + "Roboto-Regular.ttf");
 }
 
 void View::Renderer::render_background(sf::RenderTarget& window)

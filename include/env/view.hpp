@@ -62,7 +62,7 @@ namespace View
             Renderer() = default;
 
         private:
-            std::string dir = "../../res/";
+            std::string res = "../../res/";
 
         private:
             /*** DEC DRAW VARS HERE */

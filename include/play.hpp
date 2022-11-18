@@ -24,7 +24,6 @@ namespace App
             void init();
 
             void reset();
-
             void step();
 
             bool play();
