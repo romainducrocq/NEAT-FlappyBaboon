@@ -7,8 +7,13 @@
 
 #include "env/env/utils.hpp"
 
+namespace View { class Renderer; }
+
 class Pipe
 {
+    private:
+        friend class View::Renderer;
+
     private:
         float width = 60.f;
         float h_head = 45.f;

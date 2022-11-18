@@ -5,8 +5,13 @@
 
 #include "env/env/utils.hpp"
 
+namespace View { class Renderer; }
+
 class Bird
 {
+    private:
+        friend class View::Renderer;
+
     private:
         float pos_x = CONST::WIDTH / 4.f;
         float r = 20.f;
