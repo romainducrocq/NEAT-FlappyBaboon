@@ -13,13 +13,7 @@ void App::Eval::run()
     std::cout << "-------------------------------EVAL--------------------------------" << "\n";
     std::cout << "\n";
 
-    this->ev_setup();
-    this->setup();
-    this->draw_setup();
-
-    while(this->loop()){
-        this->draw_loop();
-    }
+    this->Super::app_run();
 }
 
 void App::Eval::setup()
@@ -35,15 +29,15 @@ bool App::Eval::loop()
 
 void App::Eval::ev_setup()
 {
-    View::EventHandler::EVENTHANDLER().ev_setup();
+    View::EventHandler::EVENTHANDLER().ev_setup(this->Super::ev_manager, this->Super::window);
 }
 
 void App::Eval::draw_setup()
 {
-    View::Renderer::RENDERER().draw_setup(this->env.get_m());
+    View::Renderer::RENDERER().draw_setup(this->env.get_m(), this->Super::window);
 }
 
 void App::Eval::draw_loop()
 {
-    View::Renderer::RENDERER().draw_loop(this->env.get_m());
+    View::Renderer::RENDERER().draw_loop(this->env.get_m(), this->Super::window);
 }

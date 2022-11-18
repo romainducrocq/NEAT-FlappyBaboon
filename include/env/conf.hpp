@@ -28,6 +28,7 @@ struct DefaultConf{
 
     /*** DEC ACTIONS HERE */
     enum Action{
+        JUMP, NOOP
     };
 
     const static size_t INPUTS;
@@ -71,6 +72,14 @@ struct DefaultConf{
 
     static Mode MODE;
 
+    /* SFML */
+    const static std::string NAME;
+    const static size_t WIN_W;
+    const static size_t WIN_H;
+    const static size_t FRAMERATE;
+    const static size_t ANTIALIAS;
+    const static size_t BG_COL[3];
+
     /*** DEC OPT PARAMS HERE */
 
 
@@ -90,7 +99,7 @@ struct DefaultConf{
                 default :
                     std::cerr << "usage: apps/exec [-h] [-m MOD] [-g GEN] [-e EPO] [-t STP] [-n NOP] [-p PLT] [-s SAV] \n";
                     std::cerr << "\n";
-                    std::cerr << "TidyVolve                                                                             \n";
+                    std::cerr << "NEAT FlappyBaboon                                                                             \n";
                     std::cerr << "\n";
                     std::cerr << "optional args:                                                                       \n";
                     std::cerr << "  -h      Print help and exit                                                        \n";
@@ -223,6 +232,20 @@ template<typename T>
 size_t DefaultConf<T>::MAX_STEP = 0; // (0=inf) -> no step early stop
 template<typename T>
 size_t DefaultConf<T>::MAX_NOOP = 0; // (0=inf) -> no noop early stop
+
+/* SFML */
+template<typename T>
+const std::string DefaultConf<T>::NAME = "SFML";
+template<typename T>
+const size_t DefaultConf<T>::WIN_W = 360;
+template<typename T>
+const size_t DefaultConf<T>::WIN_H = 640;
+template<typename T>
+const size_t DefaultConf<T>::FRAMERATE = 60;
+template<typename T>
+const size_t DefaultConf<T>::ANTIALIAS = 0;
+template<typename T>
+const size_t DefaultConf<T>::BG_COL[3] = { 51, 51, 51 };
 
 /*** DEF OPT PARAMS HERE */
 

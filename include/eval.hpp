@@ -5,24 +5,26 @@
 #include "env/env.hpp"
 #include "env/view.hpp"
 
+#include "utils/window.hpp"
 #include "utils/timer.hpp"
 
 namespace App
 {
-    class Eval
+    class Eval : public Window
     {
         private:
+            typedef Window Super;
             MyEnv::Env env;
 
         private:
             void run();
 
-            void ev_setup();
-            void draw_setup();
-            void draw_loop();
+            void ev_setup() override;
+            void draw_setup() override;
+            void draw_loop() override;
 
-            void setup();
-            bool loop();
+            void setup() override;
+            bool loop() override;
 
             Eval();
 

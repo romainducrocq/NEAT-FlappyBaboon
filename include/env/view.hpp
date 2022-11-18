@@ -3,9 +3,13 @@
 
 #include <vector>
 
+#include <SFML/Graphics.hpp>
+
 #include "env/conf.hpp"
 
 #include "env/env.hpp"
+
+#include "sfev/sfevmngr.hpp"
 
 #include "utils/logger.hpp"
 
@@ -20,6 +24,8 @@ namespace View
             /*** DEC EVENT STATE HERE */
             struct EventState
             {
+                bool debug = false;
+                size_t action = CONF::NOOP;
             };
 
         private:
@@ -29,7 +35,7 @@ namespace View
             EventHandler() = default;
 
         public:
-            void ev_setup();
+            void ev_setup(sfev::EventManager& ev_manager, sf::RenderWindow& window);
             void get_action(std::vector<float>& act);
 
             inline const EventState& get_ev_state() const
@@ -58,8 +64,8 @@ namespace View
 
 
         public:
-            void draw_setup(const MyEnv::Model& m);
-            void draw_loop(const MyEnv::Model& m);
+            void draw_setup(const MyEnv::Model& m, sf::RenderTarget& window);
+            void draw_loop(const MyEnv::Model& m, sf::RenderTarget& window);
 
             /*** DEC DRAW FUNCS HERE */
 

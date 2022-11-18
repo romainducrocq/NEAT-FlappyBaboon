@@ -9,36 +9,32 @@
 #include "env/env.hpp"
 #include "env/view.hpp"
 
+#include "utils/window.hpp"
 #include "utils/timer.hpp"
 
 namespace App
 {
-    class Play
+    class Play : public Window
     {
         private:
+            typedef Window Super;
             MyEnv::Env env;
 
         private:
             void init();
-
             void reset();
-
             void step();
-
             bool play();
 
         private:
             void run();
 
-            void ev_setup();
+            void ev_setup() override;
+            void draw_setup() override;
+            void draw_loop() override;
 
-            void draw_setup();
-
-            void draw_loop();
-
-            void setup();
-
-            bool loop();
+            void setup() override;
+            bool loop() override;
 
             Play();
 
