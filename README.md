@@ -1,5 +1,5 @@
 
-# [C++] FLAPPY BABOON with NEAT and TidyV2sfml
+# [C++] FLAPPY BABOON with NEAT and TidyV2fml
 
 - My very own NEAT framework in C++ (it's neat & tidy) : https://github.com/romainducrocq/TidyVolve
   
