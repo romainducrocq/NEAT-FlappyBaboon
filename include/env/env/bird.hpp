@@ -39,7 +39,6 @@ class Bird
 
         void move(size_t action);
         bool is_collision(const std::array<std::array<math::Vector2f, 2>, 2>& rects);
-        void update_collision_points();
         void rotate_theta();
         void reward();
 

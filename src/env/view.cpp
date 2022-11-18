@@ -33,7 +33,7 @@ void View::EventHandler::get_action(std::vector<float>& act)
             break;
         case CONF::NOOP:
         default:
-            act[0] = -1.f;
+            act[0] = 0.f;
             break;
     }
 }
