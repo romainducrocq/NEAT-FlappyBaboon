@@ -93,8 +93,8 @@ do
     elif [[ "${LINE}" == *"plot_demo"* ]] ; then
         echo "${LINE}" >> README.md
         echo '  ' >> README.md
-        if [ -f "../log/plots/demo.jpg" ] ; then
-            echo '![Demo](log/plots/demo.jpg)' >> README.md
+        if [ -f "../log/plots/demo.png" ] ; then
+            echo '![Demo](log/plots/demo.png)' >> README.md
         fi
         echo '  ' >> README.md
         echo '</span>' >> README.md
