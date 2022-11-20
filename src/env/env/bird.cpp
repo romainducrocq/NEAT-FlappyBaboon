@@ -79,11 +79,6 @@ void Agent::obs_y_vertex(float pipe_y)
     this->y_vertex[1].y = pipe_y;
 }
 
-void Agent::obs_rel_h(float pipe_y)
-{
-    this->rel_h = (this->pos_y >= pipe_y) ? 1.f : 0.f;
-}
-
 float Agent::get_obs_dist_x() const
 {
     return math::dist(this->x_vertex[0], this->x_vertex[1]);
@@ -92,11 +87,6 @@ float Agent::get_obs_dist_x() const
 float Agent::get_obs_dist_y() const
 {
     return math::dist(this->y_vertex[0], this->y_vertex[1]);
-}
-
-float Agent::get_rel_h() const
-{
-    return this->rel_h;
 }
 
 const std::array<math::Vector2f, 2>& Agent::get_obs_x_vertex() const { return this->x_vertex; }

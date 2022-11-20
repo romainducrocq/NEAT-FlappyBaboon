@@ -176,7 +176,7 @@ std::string DefaultConf<T>::LOG_SAV = "";
 
 /*** DEF PARAMS HERE */
 template<typename T>
-const size_t DefaultConf<T>::INPUTS = 3;
+const size_t DefaultConf<T>::INPUTS = 2;
 template<typename T>
 const size_t DefaultConf<T>::OUTPUTS = 1;
 template<typename T>

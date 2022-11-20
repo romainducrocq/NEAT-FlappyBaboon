@@ -59,18 +59,15 @@ class Agent : public Bird
     private:
         std::array<math::Vector2f, 2> x_vertex = { math::Vector2f(), math::Vector2f() };
         std::array<math::Vector2f, 2> y_vertex = { math::Vector2f(), math::Vector2f() };
-        float rel_h = 0.f;
 
     public:
         Agent();
 
         void obs_x_vertex(float pipe_back_x, float max_dist_x);
         void obs_y_vertex(float pipe_y);
-        void obs_rel_h(float pipe_y);
 
         float get_obs_dist_x() const;
         float get_obs_dist_y() const;
-        float get_rel_h() const;
 
         const std::array<math::Vector2f, 2>& get_obs_x_vertex() const;
         const std::array<math::Vector2f, 2>& get_obs_y_vertex() const;

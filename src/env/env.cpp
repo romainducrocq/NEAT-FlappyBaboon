@@ -25,11 +25,10 @@ void MyEnv::Env::obs_func()
 {
     this->m.bird.obs_x_vertex(this->m.pipes.get_next_pipe().get_rects()[0][1].x, this->Super::minmax_map.at("dist_x").max);
     this->m.bird.obs_y_vertex(this->m.pipes.get_next_pipe().get_y());
-    this->m.bird.obs_rel_h(this->m.pipes.get_next_pipe().get_y());
 
     this->mdp.obs[0] = this->Super::minmax_map.at("dist_x").minmax(this->m.bird.get_obs_dist_x());
-    this->mdp.obs[1] = this->Super::minmax_map.at("dist_y").minmax(this->m.bird.get_obs_dist_y());
-    this->mdp.obs[3] = this->Super::minmax_map.at("rel_h").minmax(this->m.bird.get_rel_h());
+    this->mdp.obs[1] = ((this->Super::minmax_map.at("dist_y").minmax(this->m.bird.get_obs_dist_y()) *
+            (this->m.bird.get_y() >= this->m.pipes.get_next_pipe().get_y() ? 1.f : -1.f)) + 1.f) / 2.f;
 }
 
 /*** DEF ACT FUNC HERE */
@@ -54,8 +53,8 @@ void MyEnv::Env::fitness_func()
     switch(this->Super::mode){
         case CONF::Mode::TRAIN:
         case CONF::Mode::EVAL:
-            this->Super::mdp.fitness += 1.f -
-                    std::pow(this->Super::minmax_map.at("dist_y").minmax(this->m.bird.get_obs_dist_y()), 2);
+            this->Super::mdp.fitness +=
+                    std::pow(1.f - this->Super::minmax_map.at("dist_y").minmax(this->m.bird.get_obs_dist_y()), 2);
             break;
 
         default:
