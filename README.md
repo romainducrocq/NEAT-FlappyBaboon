@@ -183,6 +183,12 @@ MAX_NOOP             = 0
 ```
 ```
 
+<span id="gif_demo">
+  
+![Demo](res/gif/demo.gif)
+  
+</span>
+
 ****
 
 ## Docs
