@@ -53,6 +53,8 @@ float Bird::get_theta() const { return this->theta; }
 
 float Bird::get_back_x() const { return this->back_x; }
 
+float Bird::get_speed() const { return this->speed; }
+
 size_t Bird::get_score() const { return this->score; }
 
 const std::array<float, 2>& Bird::get_y_lim() const { return this->y_lim; }

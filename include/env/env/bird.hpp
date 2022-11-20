@@ -47,6 +47,7 @@ class Bird
         float get_r() const;
         float get_theta() const;
         float get_back_x() const;
+        float get_speed() const;
         size_t get_score() const;
         const std::array<float, 2>& get_y_lim() const;
 };

@@ -14,10 +14,7 @@ void MyEnv::Env::init_func()
         Super::Scale::MinMax(0.f, std::abs(this->m.bird.get_y_lim()[0]
             - ((this->m.pipes.get_next_pipe().get_gap() / 2.f) + this->m.pipes.get_next_pipe().get_h_head() + 1.f)))
     });
-    this->Super::minmax_map.insert({
-        "rel_h",
-        Super::Scale::MinMax(0.f, 1.f)
-   });
+    this->Super::minmax_map.insert({"speed", Super::Scale::MinMax(-46.8f, 7.2f)});
 }
 
 /*** DEF OBS FUNC HERE */
@@ -29,6 +26,8 @@ void MyEnv::Env::obs_func()
     this->mdp.obs[0] = this->Super::minmax_map.at("dist_x").minmax(this->m.bird.get_obs_dist_x());
     this->mdp.obs[1] = ((this->Super::minmax_map.at("dist_y").minmax(this->m.bird.get_obs_dist_y()) *
             (this->m.bird.get_y() >= this->m.pipes.get_next_pipe().get_y() ? 1.f : -1.f)) + 1.f) / 2.f;
+
+    this->mdp.obs[2] = this->Super::minmax_map.at("speed").minmax(this->m.bird.get_speed());
 }
 
 /*** DEF ACT FUNC HERE */
@@ -75,7 +74,6 @@ void MyEnv::Env::info_func()
             std::cout << "GENERATION  : " << this->Super::generation << " / " << this->Super::max_generation_train << "\n";
             std::cout << "MAX FITNESS : " << this->Super::max_fitness << "\n";
             std::cout << "MVG AVG     : " << this->Super::mvg_avg.get() << "\n";
-            std::cout << "SCORE       : " << this->m.bird.get_score() << "\n";
             std::cout << "MAX SCORE   : " << this->m.max_score << "\n";
             std::cout << "\n";
             break;
