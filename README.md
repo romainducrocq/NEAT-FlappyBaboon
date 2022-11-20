@@ -107,7 +107,8 @@ optional args:
   -p PLT  [train]       Set file name plot plt
   -s SAV  [train, eval] Set file name save sav
   keys:
-  Space   [train, eval] Render ai observation view
+  Up      [play]        Jump
+  Space   [train, eval] Ai view
 ```
 
 ****
