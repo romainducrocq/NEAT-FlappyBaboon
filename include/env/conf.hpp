@@ -112,7 +112,7 @@ struct DefaultConf{
                     std::cerr << "  utils:                                                                             \n";
                     std::cerr << "  -p PLT  [train]       Set file name plot plt                                       \n";
                     std::cerr << "  -s SAV  [train, eval] Set file name save sav                                       \n";
-                    std::cerr << "   keys:                                                                             \n";
+                    std::cerr << "  keys:                                                                              \n";
                     std::cerr << "   Space  [train, eval] Render Ai observation view                                   \n";
 
                     return false;
@@ -186,21 +186,21 @@ const float DefaultConf<T>::MUTATE_WEIGHT_RATE = 0.1f;
 template<typename T>
 const float DefaultConf<T>::MUTATE_GENE_RATE = 0.25f;
 template<typename T>
-const float DefaultConf<T>::MUTATE_LINK_RATE = 2.f;
+const float DefaultConf<T>::MUTATE_LINK_RATE = 0.5f;
 template<typename T>
-const float DefaultConf<T>::MUTATE_BIAS_RATE = 0.4f;
+const float DefaultConf<T>::MUTATE_BIAS_RATE = 0.2f;
 template<typename T>
-const float DefaultConf<T>::MUTATE_NEURON_RATE = 0.5f;
+const float DefaultConf<T>::MUTATE_NEURON_RATE = 0.2f;
 template<typename T>
 const float DefaultConf<T>::MUTATE_ENABLE_RATE = 0.2f;
 template<typename T>
-const float DefaultConf<T>::MUTATE_DISABLE_RATE = 0.4f;
+const float DefaultConf<T>::MUTATE_DISABLE_RATE = 0.2f;
 template<typename T>
-const float DefaultConf<T>::MUTATE_OFFSET_SIZE = 0.1f;
+const float DefaultConf<T>::MUTATE_OFFSET_SIZE = 0.5f;
 template<typename T>
 const float DefaultConf<T>::MUTATE_RATE_DECAY = 0.f; // (0.f=false) -> no decay, rand perturbs
 template<typename T>
-const float DefaultConf<T>::DELTA_DISJOINT = 2.f;
+const float DefaultConf<T>::DELTA_DISJOINT = 3.f;
 template<typename T>
 const float DefaultConf<T>::DELTA_WEIGHTS = 0.4f;
 template<typename T>
@@ -208,21 +208,21 @@ const float DefaultConf<T>::DELTA_THRESHOLD = 1.f;
 template<typename T>
 const float DefaultConf<T>::CROSSOVER_PROB = 0.75f;
 template<typename T>
-const size_t DefaultConf<T>::STALE_SPECIES = 15;
+const size_t DefaultConf<T>::STALE_SPECIES = 20;
 template<typename T>
-const size_t DefaultConf<T>::POPULATION_SIZE = 10;
+const size_t DefaultConf<T>::POPULATION_SIZE = 150;
 template<typename T>
-const size_t DefaultConf<T>::MAX_POPULATION_SIZE = 150; // (0=false) -> const population size // &&
+const size_t DefaultConf<T>::MAX_POPULATION_SIZE = 0; // (0=false) -> const population size // &&
 template<typename T>
 const size_t DefaultConf<T>::POPULATION_GENS_INC = 200; // (0=false) -> const population size // &&
 template<typename T>
 const size_t DefaultConf<T>::POPULATION_INC_FREQ = 10; // (0=false) -> const population size
 template<typename T>
-const size_t DefaultConf<T>::ACT_REPEAT = 12;
+const size_t DefaultConf<T>::ACT_REPEAT = 6;
 template<typename T>
 const size_t DefaultConf<T>::MVG_AVG = 100;
 template<typename T>
-const size_t DefaultConf<T>::PLT_FREQ = 0; // (0=false) -> plot at end train only
+const size_t DefaultConf<T>::PLT_FREQ = 30; // (0=false) -> plot at end train only
 template<typename T>
 const size_t DefaultConf<T>::SAV_FREQ = 1; // (0=false) -> save at end train only
 

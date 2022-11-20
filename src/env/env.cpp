@@ -15,8 +15,8 @@ void MyEnv::Env::init_func()
             - ((this->m.pipes.get_next_pipe().get_gap() / 2.f) + this->m.pipes.get_next_pipe().get_h_head() + 1.f)))
     });
     this->Super::minmax_map.insert({
-           "rel_h",
-           Super::Scale::MinMax(0.f, 1.f)
+        "rel_h",
+        Super::Scale::MinMax(0.f, 1.f)
    });
 }
 
@@ -27,9 +27,9 @@ void MyEnv::Env::obs_func()
     this->m.bird.obs_y_vertex(this->m.pipes.get_next_pipe().get_y());
     this->m.bird.obs_rel_h(this->m.pipes.get_next_pipe().get_y());
 
-    this->mdp.act[0] = this->Super::minmax_map.at("dist_x").minmax(this->m.bird.get_obs_dist_x());
-    this->mdp.act[1] = this->Super::minmax_map.at("dist_y").minmax(this->m.bird.get_obs_dist_y());
-    this->mdp.act[3] = this->Super::minmax_map.at("dist_y").minmax(this->m.bird.get_rel_h());
+    this->mdp.obs[0] = this->Super::minmax_map.at("dist_x").minmax(this->m.bird.get_obs_dist_x());
+    this->mdp.obs[1] = this->Super::minmax_map.at("dist_y").minmax(this->m.bird.get_obs_dist_y());
+    this->mdp.obs[3] = this->Super::minmax_map.at("rel_h").minmax(this->m.bird.get_rel_h());
 }
 
 /*** DEF ACT FUNC HERE */
@@ -83,7 +83,7 @@ void MyEnv::Env::info_func()
 
         case CONF::Mode::EVAL:
             std::cout << "EPOCH       : " << this->Super::epoch << " / " << this->Super::max_epoch_eval << "\n";
-            std::cout << "MAX FITNESS : " << this->Super::max_fitness << "\n";
+            std::cout << "FITNESS     : " << this->Super::mdp.fitness << "\n";
             std::cout << "MVG AVG     : " << this->Super::mvg_avg.get() << "\n";
             std::cout << "SCORE       : " << this->m.bird.get_score() << "\n";
             std::cout << "MAX SCORE   : " << this->m.max_score << "\n";
