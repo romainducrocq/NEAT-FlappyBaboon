@@ -93,7 +93,7 @@ $ ./run.sh -m eval -e 10 -t 0 -n 0 -s sav
 ```
 usage: apps/exec [-h] [-m MOD] [-g GEN] [-e EPO] [-t STP] [-n NOP] [-p PLT] [-s SAV]
 
-NEAT XOR
+NEAT FlappyBaboon
 
 optional args:
   -h      Print help and exit
@@ -106,6 +106,8 @@ optional args:
   utils:
   -p PLT  [train]       Set file name plot plt
   -s SAV  [train, eval] Set file name save sav
+  keys:
+  Space   [train, eval] Render ai observation view
 ```
 
 ****

@@ -113,7 +113,7 @@ struct DefaultConf{
                     std::cerr << "  -p PLT  [train]       Set file name plot plt                                       \n";
                     std::cerr << "  -s SAV  [train, eval] Set file name save sav                                       \n";
                     std::cerr << "  keys:                                                                              \n";
-                    std::cerr << "   Space  [train, eval] Render Ai observation view                                   \n";
+                    std::cerr << "  Space   [train, eval] Render ai observation view                                   \n";
 
                     return false;
 
