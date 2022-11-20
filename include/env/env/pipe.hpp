@@ -39,7 +39,10 @@ class Pipe
 
         void set_is_passed();
 
+        float get_y() const;
+        float get_width() const;
         bool get_is_passed() const;
+        float get_gap() const;
         float get_h_head() const;
         const std::array<std::array<math::Vector2f, 2>, 2>& get_rects() const;
 };

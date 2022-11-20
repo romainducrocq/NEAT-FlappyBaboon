@@ -216,7 +216,7 @@ const size_t DefaultConf<T>::POPULATION_GENS_INC = 200; // (0=false) -> const po
 template<typename T>
 const size_t DefaultConf<T>::POPULATION_INC_FREQ = 10; // (0=false) -> const population size
 template<typename T>
-const size_t DefaultConf<T>::ACT_REPEAT = 0;
+const size_t DefaultConf<T>::ACT_REPEAT = 12;
 template<typename T>
 const size_t DefaultConf<T>::MVG_AVG = 100;
 template<typename T>
@@ -229,7 +229,7 @@ size_t DefaultConf<T>::GENERATIONS_TRAIN = 300; // (0=inf) -> infinite train
 template<typename T>
 size_t DefaultConf<T>::EPOCHS_EVAL = 10; // (0=inf) -> infinite eval
 template<typename T>
-size_t DefaultConf<T>::MAX_STEP = 0; // (0=inf) -> no step early stop
+size_t DefaultConf<T>::MAX_STEP = 1000; // (0=inf) -> no step early stop
 template<typename T>
 size_t DefaultConf<T>::MAX_NOOP = 0; // (0=inf) -> no noop early stop
 

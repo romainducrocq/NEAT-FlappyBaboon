@@ -2,7 +2,8 @@
 
 Bird::Bird()
 {
-    this->y_lim_down = CONST::HEIGHT - (this->r + CONST::FLOOR_Y);
+    this->y_lim[0] = CONST::HEIGHT - (this->r + CONST::FLOOR_Y);
+    this->y_lim[1] = this->r;
     this->back_x = this->pos_x - this->r;
 }
 
@@ -14,7 +15,7 @@ void Bird::move(size_t action)
 
     this->speed += this->fall;
     this->speed *= this->d_a;
-    this->pos_y = math::clip(this->r, this->y_lim_down, this->pos_y + this->speed);
+    this->pos_y = math::clip(this->r, this->y_lim[0], this->pos_y + this->speed);
 }
 
 bool Bird::is_collision(const std::array<std::array<math::Vector2f, 2>, 2>& rects)
@@ -53,3 +54,50 @@ float Bird::get_theta() const { return this->theta; }
 float Bird::get_back_x() const { return this->back_x; }
 
 size_t Bird::get_score() const { return this->score; }
+
+const std::array<float, 2>& Bird::get_y_lim() const { return this->y_lim; }
+
+
+Agent::Agent()
+{
+    this->x_vertex[0].x = this->pos_x - this->r;
+
+    this->y_vertex[0].x = this->pos_x - this->r;
+    this->y_vertex[1].x = this->pos_x - this->r;
+}
+
+void Agent::obs_x_vertex(float pipe_back_x, float max_dist_x)
+{
+    this->x_vertex[0].y = this->pos_y;
+    this->x_vertex[1].x = math::clip(this->pos_x - this->r, this->pos_x - this->r + max_dist_x, pipe_back_x);
+    this->x_vertex[1].y = this->pos_y;
+}
+
+void Agent::obs_y_vertex(float pipe_y)
+{
+    this->y_vertex[0].y = this->pos_y;
+    this->y_vertex[1].y = pipe_y;
+}
+
+void Agent::obs_rel_h(float pipe_y)
+{
+    this->rel_h = (this->pos_y >= pipe_y) ? 1.f : 0.f;
+}
+
+float Agent::get_obs_dist_x() const
+{
+    return math::dist(this->x_vertex[0], this->x_vertex[1]);
+}
+
+float Agent::get_obs_dist_y() const
+{
+    return math::dist(this->y_vertex[0], this->y_vertex[1]);
+}
+
+float Agent::get_rel_h() const
+{
+    return this->rel_h;
+}
+
+const std::array<math::Vector2f, 2>& Agent::get_obs_x_vertex() const { return this->x_vertex; }
+const std::array<math::Vector2f, 2>& Agent::get_obs_y_vertex() const { return this->y_vertex; }

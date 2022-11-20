@@ -26,7 +26,7 @@ namespace View
             /*** DEC EVENT STATE HERE */
             struct EventState
             {
-                bool debug = false;
+                bool obs_view = false;
                 size_t action = CONF::NOOP;
             };
 
@@ -88,6 +88,8 @@ namespace View
             sf::Font roboto_font;
             sf::Text text;
 
+            sf::Vertex line[2] = { sf::Vertex(), sf::Vertex() };
+
         private:
             /*** DEC DRAW FUNCS HERE */
 
@@ -100,6 +102,9 @@ namespace View
             static void draw_text(sf::Text& text, sf::Font& font, const std::string& str, size_t size, float position_x,
                                   float position_y, sf::Color color, sf::RenderTarget& window);
 
+            static void draw_line(sf::Vertex (&line)[2], float position_x1, float position_y1, float position_x2,
+                                  float position_y2, sf::Color color, sf::RenderTarget& window);
+
             void load_assets();
 
             void render_background(sf::RenderTarget& window);
@@ -107,6 +112,7 @@ namespace View
             void render_bird(const Bird& bird, sf::RenderTarget& window);
             void render_pipes(const Pipes& pipes, sf::RenderTarget& window);
             void render_score(const Bird& bird, sf::RenderTarget& window);
+            void render_obs_vertices(const Agent& agent, sf::RenderTarget& window);
 
         public:
             void draw_setup(const MyEnv::Model& m, sf::RenderTarget& window);

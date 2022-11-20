@@ -43,7 +43,13 @@ bool Pipe::out_of_screen() const
 
 void Pipe::set_is_passed() { this->is_passed = true; }
 
+float Pipe::get_y() const { return this->pos_y; }
+
+float Pipe::get_width() const { return this->width; }
+
 bool Pipe::get_is_passed() const { return this->is_passed; }
+
+float Pipe::get_gap() const { return this->gap; }
 
 float Pipe::get_h_head() const { return this->h_head; }
 

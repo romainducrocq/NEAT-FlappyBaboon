@@ -9,10 +9,10 @@ namespace View { class Renderer; }
 
 class Bird
 {
-    private:
+    protected:
         friend class View::Renderer;
 
-    private:
+    protected:
         float pos_x = CONST::WIDTH / 4.f;
         float r = 20.f;
         size_t n_collision_points = 10;
@@ -30,7 +30,7 @@ class Bird
         float y_prev = 0.f;
 
         float back_x;
-        float y_lim_down;
+        std::array<float, 2> y_lim;
 
         math::Vector2f collision_point = math::Vector2f();
 
@@ -48,6 +48,32 @@ class Bird
         float get_theta() const;
         float get_back_x() const;
         size_t get_score() const;
+        const std::array<float, 2>& get_y_lim() const;
+};
+
+class Agent : public Bird
+{
+    private:
+        typedef Bird Super;
+
+    private:
+        std::array<math::Vector2f, 2> x_vertex = { math::Vector2f(), math::Vector2f() };
+        std::array<math::Vector2f, 2> y_vertex = { math::Vector2f(), math::Vector2f() };
+        float rel_h = 0.f;
+
+    public:
+        Agent();
+
+        void obs_x_vertex(float pipe_back_x, float max_dist_x);
+        void obs_y_vertex(float pipe_y);
+        void obs_rel_h(float pipe_y);
+
+        float get_obs_dist_x() const;
+        float get_obs_dist_y() const;
+        float get_rel_h() const;
+
+        const std::array<math::Vector2f, 2>& get_obs_x_vertex() const;
+        const std::array<math::Vector2f, 2>& get_obs_y_vertex() const;
 };
 
 #endif

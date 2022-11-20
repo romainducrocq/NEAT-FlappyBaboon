@@ -50,7 +50,11 @@ class Neat
 
                 inline MinMax(float min, float max)
                     : min(min), max(max)
-                {}
+                {
+                    if(this->max - this->min == 0.f){
+                        this->max += std::numeric_limits<float>::min();
+                    }
+                }
 
                 inline float minmax(float z) const
                 {

@@ -12,7 +12,7 @@ void View::EventHandler::ev_setup(sfev::EventManager& ev_manager, sf::RenderWind
     });
 
     ev_manager.addKeyReleasedCallback(sf::Keyboard::D, [&](sfev::CstEv){
-        this->ev_state.debug = ! this->ev_state.debug;
+        this->ev_state.obs_view = ! this->ev_state.obs_view;
     });
 
     ev_manager.addKeyPressedCallback(sf::Keyboard::Up, [&](sfev::CstEv){
@@ -52,6 +52,10 @@ void View::Renderer::draw_loop(const MyEnv::Model& m, sf::RenderTarget& window)
     this->render_pipes(m.pipes, window);
     this->render_foreground(window);
     this->render_score(m.bird, window);
+    if(View::EventHandler::EVENTHANDLER().get_ev_state().obs_view &&
+       (m.mode == CONF::Mode::TRAIN || m.mode == CONF::Mode::EVAL)){
+        this->render_obs_vertices(m.bird, window);
+    }
 }
 
 /*** DEF DRAW FUNCS HERE */
@@ -82,6 +86,20 @@ void View::Renderer::draw_text(sf::Text& text, sf::Font& font, const std::string
     text.setFillColor(color);
     text.setPosition(position_x, position_y);
     window.draw(text);
+}
+
+void View::Renderer::draw_line(sf::Vertex (&line)[2], float position_x1, float position_y1, float position_x2,
+                               float position_y2, sf::Color color, sf::RenderTarget& window)
+{
+    line[0].position.x = position_x1;
+    line[0].position.y = position_y1;
+    line[0].color = color;
+
+    line[1].position.x = position_x2;
+    line[1].position.y = position_y2;
+    line[1].color = color;
+
+    window.draw(line, 2, sf::Lines);
 }
 
 void View::Renderer::load_assets()
@@ -135,4 +153,12 @@ void View::Renderer::render_score(const Bird& bird, sf::RenderTarget& window)
 {
     View::Renderer::draw_text(this->text, this->roboto_font, "Score : " + std::to_string(bird.get_score()),
                               24, 10.f, 10.f, sf::Color::Black, window);
+}
+
+void View::Renderer::render_obs_vertices(const Agent& agent, sf::RenderTarget& window)
+{
+    View::Renderer::draw_line(this->line, agent.get_obs_x_vertex()[0].x, agent.get_obs_x_vertex()[0].y,
+                              agent.get_obs_x_vertex()[1].x, agent.get_obs_x_vertex()[1].y, sf::Color::Red, window);
+    View::Renderer::draw_line(this->line, agent.get_obs_y_vertex()[0].x, agent.get_obs_y_vertex()[0].y,
+                              agent.get_obs_y_vertex()[1].x, agent.get_obs_y_vertex()[1].y, sf::Color::Red, window);
 }
