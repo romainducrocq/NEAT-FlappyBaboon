@@ -4,7 +4,7 @@
 /*** DEF DEFAULT ARGS HERE */
 /*
  * TRAIN
-   -g 300 -t 0 -n 0 -p plt -s sav
+   -g 300 -t 1000 -n 0 -p plt -s sav
  * EVAL
    -e 10 -t 0 -n 0 -s sav
  * PLAY
@@ -99,7 +99,7 @@ struct DefaultConf{
                 default :
                     std::cerr << "usage: apps/exec [-h] [-m MOD] [-g GEN] [-e EPO] [-t STP] [-n NOP] [-p PLT] [-s SAV] \n";
                     std::cerr << "\n";
-                    std::cerr << "NEAT FlappyBaboon                                                                             \n";
+                    std::cerr << "NEAT FlappyBaboon                                                                    \n";
                     std::cerr << "\n";
                     std::cerr << "optional args:                                                                       \n";
                     std::cerr << "  -h      Print help and exit                                                        \n";
@@ -112,6 +112,8 @@ struct DefaultConf{
                     std::cerr << "  utils:                                                                             \n";
                     std::cerr << "  -p PLT  [train]       Set file name plot plt                                       \n";
                     std::cerr << "  -s SAV  [train, eval] Set file name save sav                                       \n";
+                    std::cerr << "   keys:                                                                             \n";
+                    std::cerr << "   Space  [train, eval] Render Ai observation view                                   \n";
 
                     return false;
 
@@ -174,7 +176,7 @@ std::string DefaultConf<T>::LOG_SAV = "";
 
 /*** DEF PARAMS HERE */
 template<typename T>
-const size_t DefaultConf<T>::INPUTS = 2;
+const size_t DefaultConf<T>::INPUTS = 3;
 template<typename T>
 const size_t DefaultConf<T>::OUTPUTS = 1;
 template<typename T>
