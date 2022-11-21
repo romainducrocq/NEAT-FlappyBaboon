@@ -19,8 +19,18 @@ void App::Train::run()
         while(this->loop()){}
     });
 
+    std::thread th2([&]() {
+        if(! CONF::LOG_SAV.empty()) {
+            App::Eval::EVAL();
+        }
+    });
+
     if(th.joinable()){
         th.join();
+    }
+
+    if(th2.joinable()){
+        th2.join();
     }
 }
 

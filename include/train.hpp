@@ -6,6 +6,8 @@
 #include "env/conf.hpp"
 #include "env/env.hpp"
 
+#include "eval.hpp"
+
 #include "utils/timer.hpp"
 
 namespace App
