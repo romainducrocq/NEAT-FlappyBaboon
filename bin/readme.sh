@@ -10,7 +10,7 @@ do
         echo '' >> README.md
         echo '# [C++] APPLICATION with NEAT and TidyVolve' >> README.md
         echo '' >> README.md
-        echo '- My very own NEAT framework in C++ (it'"'"'s neat & tidy) : https://github.com/romainducrocq/TidyVolve' >> README.md
+        echo '- My very own NEAT framework in C++ (it'"'"'s v2 with SFML) : https://github.com/romainducrocq/TidyV2fml' >> README.md
     elif [[ "${LINE}" == *"how_to_run"* ]] ; then
         echo "${LINE}" >> README.md
         echo '```' >> README.md
