@@ -230,7 +230,7 @@ const size_t DefaultConf<T>::SAV_FREQ = 1; // (0=false) -> save at end train onl
 template<typename T>
 size_t DefaultConf<T>::GENERATIONS_TRAIN = 100; // (0=inf) -> infinite train
 template<typename T>
-size_t DefaultConf<T>::EPOCHS_EVAL = 10; // (0=inf) -> infinite eval
+size_t DefaultConf<T>::EPOCHS_EVAL = 0; // (0=inf) -> infinite eval
 template<typename T>
 size_t DefaultConf<T>::MAX_STEP = 1000; // (0=inf) -> no step early stop
 template<typename T>
@@ -238,7 +238,7 @@ size_t DefaultConf<T>::MAX_NOOP = 0; // (0=inf) -> no noop early stop
 
 /* SFML */
 template<typename T>
-const std::string DefaultConf<T>::NAME = "SFML";
+const std::string DefaultConf<T>::NAME = "";
 template<typename T>
 const size_t DefaultConf<T>::WIN_W = 360;
 template<typename T>

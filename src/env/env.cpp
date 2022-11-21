@@ -71,7 +71,8 @@ void MyEnv::Env::info_func()
     switch(this->Super::mode){
 
         case CONF::Mode::TRAIN:
-            std::cout << "GENERATION  : " << this->Super::generation << " / " << this->Super::max_generation_train << "\n";
+            std::cout << "GENERATION  : " << this->Super::generation << " / " <<
+                (this->Super::max_generation_train > 0 ? std::to_string(this->Super::max_generation_train) : "INF") << "\n";
             std::cout << "MAX FITNESS : " << this->Super::max_fitness << "\n";
             std::cout << "MVG AVG     : " << this->Super::mvg_avg.get() << "\n";
             std::cout << "MAX SCORE   : " << this->m.max_score << "\n";
@@ -79,7 +80,8 @@ void MyEnv::Env::info_func()
             break;
 
         case CONF::Mode::EVAL:
-            std::cout << "EPOCH       : " << this->Super::epoch << " / " << this->Super::max_epoch_eval << "\n";
+            std::cout << "EPOCH       : " << this->Super::epoch << " / " <<
+                (this->Super::max_epoch_eval > 0 ? std::to_string(this->Super::max_epoch_eval) : "INF") << "\n";
             std::cout << "FITNESS     : " << this->Super::mdp.fitness << "\n";
             std::cout << "MVG AVG     : " << this->Super::mvg_avg.get() << "\n";
             std::cout << "SCORE       : " << this->m.bird.get_score() << "\n";
@@ -88,7 +90,8 @@ void MyEnv::Env::info_func()
             break;
 
         case CONF::Mode::PLAY:
-            std::cout << "EPOCH     : " << this->Super::epoch << " / " << this->Super::max_epoch_eval << "\n";
+            std::cout << "EPOCH     : " << this->Super::epoch << " / " <<
+                (this->Super::max_epoch_eval > 0 ? std::to_string(this->Super::max_epoch_eval) : "INF") << "\n";
             std::cout << "SCORE     : " << this->m.bird.get_score() << "\n";
             std::cout << "MAX SCORE : " << this->m.max_score << "\n";
             std::cout << "\n";
