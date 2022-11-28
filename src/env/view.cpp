@@ -7,11 +7,11 @@ void View::EventHandler::ev_setup(sfev::EventManager& ev_manager, sf::RenderWind
         window.close();
     });
 
-    ev_manager.addKeyReleasedCallback(sf::Keyboard::Escape, [&](sfev::CstEv){
+    ev_manager.addKeyReleasedCallback(sfev::kbmap.at("Escape"), [&](sfev::CstEv){
         window.close();
     });
 
-    ev_manager.addKeyReleasedCallback(sf::Keyboard::Space, [&](sfev::CstEv){
+    ev_manager.addKeyReleasedCallback(sfev::kbmap.at("Space"), [&](sfev::CstEv){
         this->ev_state.obs_view = ! this->ev_state.obs_view;
     });
 
