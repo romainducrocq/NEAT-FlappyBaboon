@@ -32,7 +32,7 @@ struct DefaultConf{
 
     /*** DEC ACTIONS HERE */
     enum Action{
-        JUMP
+        UP
     };
 
     const static size_t INPUTS;
@@ -85,6 +85,10 @@ struct DefaultConf{
     const static size_t BG_COL[3];
 
     /*** DEC OPT PARAMS HERE */
+    const static std::string KEY_UP;
+
+    const static std::string KEY_DEBUG;
+
     const static std::vector<typename DefaultConf<T>::Action> ACTIONS;
 
     static inline bool argParse(int argc, char** argv)
@@ -118,7 +122,7 @@ struct DefaultConf{
                     std::cerr << "  -s SAV  [train, eval] Set file name save sav                                       \n";
                     std::cerr << "  keys:                                                                              \n";
                     std::cerr << "  Up      [play]        Jump                                                         \n";
-                    std::cerr << "  Space   [train, eval] Ai view                                                      \n";
+                    std::cerr << "  D       [train, eval] (Debug) Ai view                                              \n";
 
                     return false;
 
@@ -256,8 +260,13 @@ const size_t DefaultConf<T>::BG_COL[3] = { 51, 51, 51 };
 
 /*** DEF OPT PARAMS HERE */
 template<typename T>
+const std::string DefaultConf<T>::KEY_UP = "Up";
+template<typename T>
+const std::string DefaultConf<T>::KEY_DEBUG = "D";
+
+template<typename T>
 const std::array<typename DefaultConf<T>::Action, DefaultConf<T>::OUTPUTS> ACTIONS_ = {
-        DefaultConf<T>::Action::JUMP,
+        DefaultConf<T>::Action::UP,
 };
 template<typename T>
 const std::vector<typename DefaultConf<T>::Action> DefaultConf<T>::ACTIONS = {

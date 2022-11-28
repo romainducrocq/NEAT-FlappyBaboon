@@ -109,7 +109,7 @@ optional args:
   -s SAV  [train, eval] Set file name save sav
   keys:
   Up      [play]        Jump
-  Space   [train, eval] Ai view
+  D       [train, eval] (Debug) Ai view
 ```
 
 ****

@@ -10,7 +10,7 @@
 #include "env/env.hpp"
 
 #include "sfev/sfevmngr.hpp"
-#include "sfev/kbmap.hpp"
+#include "sfev/sfmap.hpp"
 
 #include "utils/logger.hpp"
 
@@ -30,10 +30,11 @@ namespace View
                 const std::vector<CONF::Action>& actions = CONF::ACTIONS;
 
                 std::unordered_map<CONF::Action, std::pair<sf::Keyboard::Key, bool>> keys = {
-                        {CONF::Action::JUMP, {sfev::kbmap.at("Up"), false}}
+                        {CONF::Action::UP, {sfev::kbmap.at(CONF::KEY_UP), false}}
                 };
 
-                bool obs_view = false;
+                std::string key_debug = CONF::KEY_DEBUG;
+                bool debug = false;
             };
 
         private:

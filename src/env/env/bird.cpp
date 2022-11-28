@@ -7,9 +7,11 @@ Bird::Bird()
     this->back_x = this->pos_x - this->r;
 }
 
-void Bird::up()
+void Bird::up(bool act)
 {
-    this->speed -= this->jump;
+    if(act){
+        this->speed -= this->jump;
+    }
 }
 
 void Bird::move()

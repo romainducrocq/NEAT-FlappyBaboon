@@ -34,12 +34,10 @@ void MyEnv::Env::obs_func()
 void MyEnv::Env::act_func()
 {
     for(size_t i = 0; i < this->mdp.act.size(); i++){
-        if(Super::Output::activate(this->mdp.act[i])){
-            switch(this->m.actions[i]){
-                case CONF::Action::JUMP:
-                    this->m.bird.up();
-                    break;
-            }
+        switch(this->m.actions[i]){
+            case CONF::Action::UP:
+                this->m.bird.up(Super::Output::activate(this->mdp.act[i]));
+                break;
         }
     }
 }

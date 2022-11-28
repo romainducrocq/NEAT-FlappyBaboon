@@ -3,7 +3,7 @@
 /*** DEF EVENT SETUP HERE */
 void View::EventHandler::ev_setup(sfev::EventManager& ev_manager, sf::RenderWindow& window)
 {
-    ev_manager.addEventCallback(sf::Event::Closed, [&](sfev::CstEv){
+    ev_manager.addEventCallback(sfev::evmap.at("Closed"), [&](sfev::CstEv){
         window.close();
     });
 
@@ -11,8 +11,8 @@ void View::EventHandler::ev_setup(sfev::EventManager& ev_manager, sf::RenderWind
         window.close();
     });
 
-    ev_manager.addKeyReleasedCallback(sfev::kbmap.at("Space"), [&](sfev::CstEv){
-        this->ev_state.obs_view = ! this->ev_state.obs_view;
+    ev_manager.addKeyReleasedCallback(sfev::kbmap.at(this->ev_state.key_debug), [&](sfev::CstEv){
+        this->ev_state.debug = ! this->ev_state.debug;
     });
 
     for(const auto& action : this->ev_state.actions){
@@ -48,7 +48,7 @@ void View::Renderer::draw_loop(const MyEnv::Model& m, sf::RenderTarget& window)
     this->render_pipes(m.pipes, window);
     this->render_foreground(window);
     this->render_score(m.bird, window);
-    if(View::EventHandler::EVENTHANDLER().get_ev_state().obs_view &&
+    if(View::EventHandler::EVENTHANDLER().get_ev_state().debug &&
        (m.mode == CONF::Mode::TRAIN || m.mode == CONF::Mode::EVAL)){
         this->render_obs_vertices(m.bird, window);
     }

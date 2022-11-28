@@ -37,7 +37,7 @@ class Bird
     public:
         Bird();
 
-        void up();
+        void up(bool act);
         void move();
         bool is_collision(const std::array<std::array<math::Vector2f, 2>, 2>& rects);
         void rotate_theta();
