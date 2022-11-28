@@ -11,8 +11,8 @@ void View::EventHandler::ev_setup(sfev::EventManager& ev_manager, sf::RenderWind
         window.close();
     });
 
-    ev_manager.addKeyReleasedCallback(sfev::kbmap.at(this->ev_state.key_debug), [&](sfev::CstEv){
-        this->ev_state.debug = ! this->ev_state.debug;
+    ev_manager.addKeyReleasedCallback(this->ev_state.debug.first, [&](sfev::CstEv){
+        this->ev_state.debug.second = ! this->ev_state.debug.second;
     });
 
     for(const auto& action : this->ev_state.actions){
@@ -48,7 +48,7 @@ void View::Renderer::draw_loop(const MyEnv::Model& m, sf::RenderTarget& window)
     this->render_pipes(m.pipes, window);
     this->render_foreground(window);
     this->render_score(m.bird, window);
-    if(View::EventHandler::EVENTHANDLER().get_ev_state().debug &&
+    if(View::EventHandler::EVENTHANDLER().get_ev_state().debug.second &&
        (m.mode == CONF::Mode::TRAIN || m.mode == CONF::Mode::EVAL)){
         this->render_obs_vertices(m.bird, window);
     }

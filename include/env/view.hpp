@@ -15,6 +15,9 @@
 #include "utils/logger.hpp"
 
 /*** ADD INCLUDE HERE */
+#include "unordered_map"
+#include "utility"
+
 #include "env/env/bird.hpp"
 #include "env/env/pipe.hpp"
 #include "env/env/utils.hpp"
@@ -32,9 +35,8 @@ namespace View
                 std::unordered_map<CONF::Action, std::pair<sf::Keyboard::Key, bool>> keys = {
                         {CONF::Action::UP, {sfev::kbmap.at(CONF::KEY_UP), false}}
                 };
-
-                std::string key_debug = CONF::KEY_DEBUG;
-                bool debug = false;
+                
+                std::pair<sf::Keyboard::Key, bool> debug = {sfev::kbmap.at(CONF::KEY_DEBUG), false};
             };
 
         private:
