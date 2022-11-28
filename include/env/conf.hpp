@@ -261,6 +261,7 @@ const size_t DefaultConf<T>::BG_COL[3] = { 51, 51, 51 };
 /*** DEF OPT PARAMS HERE */
 template<typename T>
 const std::string DefaultConf<T>::KEY_UP = "Up";
+
 template<typename T>
 const std::string DefaultConf<T>::KEY_DEBUG = "D";
 
