@@ -10,6 +10,7 @@
 #include "env/env.hpp"
 
 #include "sfev/sfevmngr.hpp"
+#include "sfev/kbmap.hpp"
 
 #include "utils/logger.hpp"
 
@@ -26,8 +27,13 @@ namespace View
             /*** DEC EVENT STATE HERE */
             struct EventState
             {
+                const std::vector<CONF::Action>& actions = CONF::ACTIONS;
+
+                std::unordered_map<CONF::Action, std::pair<sf::Keyboard::Key, bool>> keys = {
+                        {CONF::Action::JUMP, {sfev::kbmap.at("Up"), false}}
+                };
+
                 bool obs_view = false;
-                size_t action = CONF::NOOP;
             };
 
         private:

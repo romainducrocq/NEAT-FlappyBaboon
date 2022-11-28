@@ -20,6 +20,10 @@
 #include <cstring>
 #include <cstdlib>
 
+/*** ADD INCLUDE HERE */
+#include "vector"
+#include "array"
+
 template<typename T>
 struct DefaultConf{
     enum Mode{
@@ -28,7 +32,7 @@ struct DefaultConf{
 
     /*** DEC ACTIONS HERE */
     enum Action{
-        JUMP, NOOP
+        JUMP
     };
 
     const static size_t INPUTS;
@@ -81,7 +85,7 @@ struct DefaultConf{
     const static size_t BG_COL[3];
 
     /*** DEC OPT PARAMS HERE */
-
+    const static std::vector<typename DefaultConf<T>::Action> ACTIONS;
 
     static inline bool argParse(int argc, char** argv)
     {
@@ -251,7 +255,14 @@ template<typename T>
 const size_t DefaultConf<T>::BG_COL[3] = { 51, 51, 51 };
 
 /*** DEF OPT PARAMS HERE */
-
+template<typename T>
+const std::array<typename DefaultConf<T>::Action, DefaultConf<T>::OUTPUTS> ACTIONS_ = {
+        DefaultConf<T>::Action::JUMP,
+};
+template<typename T>
+const std::vector<typename DefaultConf<T>::Action> DefaultConf<T>::ACTIONS = {
+        ACTIONS_<T>.begin(), ACTIONS_<T>.end()
+};
 
 using CONF = DefaultConf<int>;
 

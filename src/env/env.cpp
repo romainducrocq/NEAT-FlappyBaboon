@@ -33,10 +33,14 @@ void MyEnv::Env::obs_func()
 /*** DEF ACT FUNC HERE */
 void MyEnv::Env::act_func()
 {
-    if(Super::Output::activate(this->mdp.act[0])){
-        this->m.bird.move(CONF::JUMP);
-    }else{
-        this->m.bird.move(CONF::NOOP);
+    for(size_t i = 0; i < this->mdp.act.size(); i++){
+        if(Super::Output::activate(this->mdp.act[i])){
+            switch(this->m.actions[i]){
+                case CONF::Action::JUMP:
+                    this->m.bird.up();
+                    break;
+            }
+        }
     }
 }
 
@@ -117,6 +121,7 @@ void MyEnv::Env::reset_func()
 /*** DEF STEP FUNC HERE */
 void MyEnv::Env::step_func()
 {
+    this->m.bird.move();
     this->m.pipes.add_pipe();
     this->m.pipes.move_pipes();
     this->m.pipes.remove_pipe();

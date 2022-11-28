@@ -7,12 +7,13 @@ Bird::Bird()
     this->back_x = this->pos_x - this->r;
 }
 
-void Bird::move(size_t action)
+void Bird::up()
 {
-    if(action == CONF::Action::JUMP) {
-        this->speed -= this->jump;
-    }
+    this->speed -= this->jump;
+}
 
+void Bird::move()
+{
     this->speed += this->fall;
     this->speed *= this->d_a;
     this->pos_y = math::clip(this->r, this->y_lim[0], this->pos_y + this->speed);

@@ -15,26 +15,22 @@ void View::EventHandler::ev_setup(sfev::EventManager& ev_manager, sf::RenderWind
         this->ev_state.obs_view = ! this->ev_state.obs_view;
     });
 
-    ev_manager.addKeyPressedCallback(sf::Keyboard::Up, [&](sfev::CstEv){
-        ev_state.action = CONF::JUMP;
-    });
+    for(const auto& action : this->ev_state.actions){
+        ev_manager.addKeyPressedCallback(this->ev_state.keys.at(action).first, [&](sfev::CstEv){
+            this->ev_state.keys.at(action).second = true;
+        });
 
-    ev_manager.addKeyReleasedCallback(sf::Keyboard::Up, [&](sfev::CstEv){
-        ev_state.action = CONF::NOOP;
-    });
+        ev_manager.addKeyReleasedCallback(this->ev_state.keys.at(action).first, [&](sfev::CstEv){
+            this->ev_state.keys.at(action).second = false;
+        });
+    }
 }
 
 /*** DEF ACTION HANDLER HERE */
 void View::EventHandler::get_action(std::vector<float>& act)
 {
-    switch(this->ev_state.action){
-        case CONF::JUMP:
-            act[0] = 1.f;
-            break;
-        case CONF::NOOP:
-        default:
-            act[0] = -1.f;
-            break;
+    for (size_t i = 0; i < act.size(); i++) {
+        act[i] = this->ev_state.keys.at(this->ev_state.actions[i]).second ? 1.f : -1.f;
     }
 }
 

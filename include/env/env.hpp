@@ -24,6 +24,8 @@ namespace MyEnv
 
         Agent bird;
         Pipes pipes;
+
+        const std::vector<CONF::Action>& actions = CONF::ACTIONS;
     };
 
     class Env : public Neat
