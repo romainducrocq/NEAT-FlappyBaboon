@@ -40,7 +40,7 @@ class Bird
     public:
         Bird();
 
-        void act(CONF::Action, bool a);
+        void act(CONF::Action action, bool a);
 
         void move();
         bool is_collision(const std::array<std::array<math::Vector2f, 2>, 2>& rects);
