@@ -34,10 +34,14 @@ class Bird
 
         math::Vector2f collision_point = math::Vector2f();
 
+    private:
+        void up();
+
     public:
         Bird();
 
-        void up(bool act);
+        void act(CONF::Action, bool a);
+
         void move();
         bool is_collision(const std::array<std::array<math::Vector2f, 2>, 2>& rects);
         void rotate_theta();

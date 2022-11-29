@@ -7,10 +7,19 @@ Bird::Bird()
     this->back_x = this->pos_x - this->r;
 }
 
-void Bird::up(bool act)
+void Bird::up()
 {
-    if(act){
-        this->speed -= this->jump;
+    this->speed -= this->jump;
+}
+
+void Bird::act(CONF::Action action, bool a)
+{
+    if(a){
+        switch(action){
+            case CONF::Action::UP:
+                this->up();
+                break;
+        }
     }
 }
 

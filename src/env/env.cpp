@@ -34,11 +34,7 @@ void MyEnv::Env::obs_func()
 void MyEnv::Env::act_func()
 {
     for(size_t i = 0; i < this->mdp.act.size(); i++){
-        switch(this->m.actions[i]){
-            case CONF::Action::UP:
-                this->m.bird.up(Super::Output::activate(this->mdp.act[i]));
-                break;
-        }
+        this->m.bird.act(this->m.actions[i], Super::Output::activate(this->mdp.act[i]));
     }
 }
 
