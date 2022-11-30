@@ -27,7 +27,7 @@ void View::EventHandler::ev_setup(sfev::EventManager& ev_manager, sf::RenderWind
 }
 
 /*** DEF ACTION HANDLER HERE */
-void View::EventHandler::get_action(std::vector<float>& act)
+void View::EventHandler::get_action(std::array<float, CONF::OUTPUTS>& act)
 {
     for (size_t i = 0; i < act.size(); i++) {
         act[i] = this->ev_state.keys.at(this->ev_state.actions[i]).second ? 1.f : -1.f;
