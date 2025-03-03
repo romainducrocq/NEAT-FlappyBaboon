@@ -100,7 +100,7 @@ $ ./run.sh -m eval -e 10 -t 0 -n 0 -s sav
 ```
 usage: apps/exec [-h] [-m MOD] [-g GEN] [-e EPO] [-t STP] [-n NOP] [-p PLT] [-s SAV]
 
-NEAT FlappyBaboon
+NEAT FlappyBird
 
 optional args:
   -h      Print help and exit

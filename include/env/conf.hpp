@@ -107,7 +107,7 @@ struct DefaultConf{
                 default :
                     std::cerr << "usage: apps/exec [-h] [-m MOD] [-g GEN] [-e EPO] [-t STP] [-n NOP] [-p PLT] [-s SAV] \n";
                     std::cerr << "\n";
-                    std::cerr << "NEAT FlappyBaboon                                                                    \n";
+                    std::cerr << "NEAT FlappyBird                                                                      \n";
                     std::cerr << "\n";
                     std::cerr << "optional args:                                                                       \n";
                     std::cerr << "  -h      Print help and exit                                                        \n";
